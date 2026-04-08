@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teaching | Performance Materials Lab | UNC Charlotte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy:       #0b1929;
+    --navy-mid:   #142036;
+    --navy-light: #1e3050;
+    --gold:       #c8963e;
+    --gold-light: #e8b86d;
+    --cream:      #f4efe6;
+    --cream-dim:  #ddd5c3;
+    --white:      #ffffff;
+    --text-muted: rgba(244,239,230,0.55);
+    --border:     rgba(200,150,62,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--navy);
+    color: var(--cream);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 48px; height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(11,25,41,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo { display: flex; flex-direction: column; gap: 1px; }
+  .nav-logo .lab-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-weight: 600; color: var(--gold-light);
+    letter-spacing: 0.03em; line-height: 1;
+  }
+  .nav-logo .institution {
+    font-size: 10px; font-weight: 400; color: var(--text-muted);
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--cream-dim);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+
+  /* ===== PAGE HERO ===== */
+  .page-hero {
+    padding: 140px 48px 88px;
+    background: var(--navy-mid);
+    position: relative; overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(200,150,62,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,150,62,0.035) 1px, transparent 1px);
+    background-size: 80px 80px; pointer-events: none;
+  }
+  .page-hero-content { position: relative; max-width: 1160px; margin: 0 auto; }
+
+  .hero-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+  }
+
+  .page-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+  }
+  .page-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+
+  .page-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(46px, 6vw, 76px); font-weight: 600;
+    line-height: 1.05; color: var(--white); margin-bottom: 20px;
+  }
+  .page-hero h1 em { font-style: italic; color: var(--gold-light); }
+  .page-hero-sub {
+    font-size: 17px; font-weight: 300; color: var(--text-muted);
+    max-width: 520px; line-height: 1.75;
+  }
+
+  /* Philosophy pull quote in hero */
+  .hero-philosophy {
+    border-left: 3px solid var(--gold);
+    padding: 28px 32px;
+    background: rgba(200,150,62,0.05);
+    position: relative;
+  }
+  .hero-philosophy::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px; font-weight: 400;
+    color: rgba(200,150,62,0.2);
+    position: absolute; top: -10px; left: 24px;
+    line-height: 1;
+  }
+  .hero-philosophy p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; font-style: italic;
+    color: var(--cream); line-height: 1.5; margin-bottom: 16px;
+    padding-top: 20px;
+  }
+  .hero-philosophy cite {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+    font-style: normal;
+  }
+
+  /* ===== UTILITY ===== */
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+  section { padding: 88px 0; }
+
+  .section-label {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+  }
+  .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 48px); font-weight: 600;
+    color: var(--white); line-height: 1.1; margin-bottom: 16px;
+  }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border: 0.5px solid var(--gold);
+    color: var(--gold-light); font-family: 'Jost', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none; transition: background 0.2s;
+  }
+  .btn-ghost:hover { background: rgba(200,150,62,0.1); }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; background: var(--gold); color: var(--navy);
+    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+
+  /* ===== PHILOSOPHY PILLARS ===== */
+  .philosophy-section { background: var(--navy); }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 52px;
+  }
+
+  .pillar-card {
+    background: var(--navy-mid);
+    padding: 44px 36px;
+    border-top: 2px solid transparent;
+    transition: border-color 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .pillar-card:hover { border-top-color: var(--gold); }
+
+  .pillar-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 88px; font-weight: 400;
+    color: rgba(200,150,62,0.06);
+    position: absolute; top: 8px; right: 20px;
+    line-height: 1; pointer-events: none; user-select: none;
+  }
+
+  .pillar-icon {
+    width: 44px; height: 44px;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold-light); margin-bottom: 24px;
+  }
+  .pillar-icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+
+  .pillar-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 600; color: var(--white);
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .pillar-card p {
+    font-size: 14px; font-weight: 300; color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* ===== COURSE CARDS ===== */
+  .courses-section { background: var(--navy-mid); }
+
+  .course-block {
+    background: var(--navy);
+    margin-bottom: 2px;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    min-height: 400px;
+  }
+  .course-block:last-child { margin-bottom: 0; }
+
+  .course-sidebar {
+    background: var(--navy-light);
+    padding: 48px 36px;
+    border-right: 0.5px solid var(--border);
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+  }
+  .course-sidebar::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--gold);
+  }
+
+  .course-code {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+  }
+  .course-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 600; color: var(--white);
+    line-height: 1.15; margin-bottom: 20px;
+  }
+  .course-meta-list { display: flex; flex-direction: column; gap: 10px; }
+  .course-meta-row { display: flex; flex-direction: column; gap: 2px; }
+  .course-meta-key {
+    font-size: 9px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .course-meta-val {
+    font-size: 13px; font-weight: 300; color: var(--cream-dim);
+  }
+  .course-status {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 11px; font-weight: 500; color: var(--gold-light);
+    margin-top: 24px;
+  }
+  .status-dot-live {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+  .course-body { padding: 48px 48px; display: flex; flex-direction: column; gap: 36px; }
+
+  .course-description {}
+  .course-description p {
+    font-size: 15px; font-weight: 300; color: var(--text-muted); line-height: 1.85;
+    margin-bottom: 14px;
+  }
+  .course-description p strong { color: var(--cream); font-weight: 500; }
+
+  /* Topic modules grid */
+  .modules-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+  }
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .module-chip {
+    background: var(--navy-light);
+    padding: 14px 16px;
+    border-left: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .module-chip:hover { border-left-color: var(--gold); }
+  .module-name {
+    font-size: 13px; font-weight: 500; color: var(--cream);
+    margin-bottom: 3px; line-height: 1.2;
+  }
+  .module-detail {
+    font-size: 11px; font-weight: 300; color: var(--text-muted);
+  }
+
+  /* Deliverables row */
+  .deliverables-row {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    padding-top: 24px; border-top: 0.5px solid var(--border);
+  }
+  .deliverable-badge {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.08em;
+    padding: 5px 12px;
+    border: 0.5px solid rgba(200,150,62,0.35);
+    color: var(--gold); text-transform: uppercase;
+  }
+  .deliverables-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--text-muted);
+    align-self: center; margin-right: 4px;
+  }
+
+  /* ===== INDUSTRY BRIDGE ===== */
+  .bridge-section { background: var(--navy-light); }
+
+  .bridge-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .bridge-text h2 { margin-bottom: 24px; }
+  .bridge-text p {
+    font-size: 15px; font-weight: 300; color: var(--text-muted);
+    line-height: 1.85; margin-bottom: 18px;
+  }
+  .bridge-text p strong { color: var(--cream); font-weight: 500; }
+
+  .timeline {
+    display: flex; flex-direction: column; gap: 0;
+    position: relative;
+    margin-top: 8px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+
+  .timeline-item {
+    display: flex; gap: 24px; align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 0.5px solid rgba(200,150,62,0.08);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+
+  .timeline-dot {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border: 1px solid var(--gold);
+    background: var(--navy-mid);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-weight: 600; color: var(--gold);
+    position: relative; z-index: 1;
+  }
+
+  .timeline-content {}
+  .timeline-role {
+    font-size: 14px; font-weight: 500; color: var(--cream);
+    margin-bottom: 3px;
+  }
+  .timeline-note {
+    font-size: 12px; font-weight: 300; color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .bridge-callout {
+    background: var(--navy-mid);
+    border: 0.5px solid var(--border);
+    border-left: 3px solid var(--gold);
+    padding: 28px 28px;
+    margin-top: 36px;
+  }
+  .bridge-callout p {
+    font-size: 14px; font-weight: 300;
+    color: var(--cream-dim); line-height: 1.75;
+    margin: 0 !important;
+  }
+  .bridge-callout p strong { color: var(--cream) !important; font-weight: 500; }
+
+  /* ===== STUDENT OUTCOMES ===== */
+  .outcomes-section { background: var(--navy-mid); }
+
+  .outcomes-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 52px;
+    align-items: start;
+  }
+
+  .outcomes-panel {
+    background: var(--navy);
+    padding: 40px 36px;
+  }
+  .outcomes-panel h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 600; color: var(--white);
+    margin-bottom: 24px; line-height: 1.2;
+  }
+  .outcome-list { display: flex; flex-direction: column; gap: 14px; }
+  .outcome-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding-bottom: 14px;
+    border-bottom: 0.5px solid rgba(200,150,62,0.08);
+  }
+  .outcome-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .outcome-marker {
+    width: 20px; height: 20px; flex-shrink: 0;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 600; color: var(--gold);
+    margin-top: 2px;
+  }
+  .outcome-text {
+    font-size: 13px; font-weight: 300; color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .outcome-text strong { color: var(--cream); font-weight: 500; }
+
+  /* Tools / instruments table */
+  .instruments-panel {
+    background: var(--navy);
+    padding: 40px 36px;
+  }
+  .instruments-panel h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 600; color: var(--white);
+    margin-bottom: 24px; line-height: 1.2;
+  }
+  .instrument-table { width: 100%; border-collapse: collapse; }
+  .instrument-table tr { border-bottom: 0.5px solid rgba(200,150,62,0.08); }
+  .instrument-table tr:last-child { border-bottom: none; }
+  .instrument-table td {
+    padding: 12px 0;
+    font-size: 13px; font-weight: 300; vertical-align: top;
+  }
+  .instrument-table td:first-child {
+    color: var(--cream); font-weight: 400; padding-right: 16px;
+    min-width: 160px;
+  }
+  .instrument-table td:last-child { color: var(--text-muted); }
+
+  /* ===== GRAD MENTORING ===== */
+  .mentoring-section { background: var(--navy); }
+
+  .mentoring-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 52px;
+  }
+  .mentee-card {
+    background: var(--navy-mid);
+    padding: 36px 30px;
+    border-top: 2px solid transparent;
+    transition: border-top-color 0.2s;
+  }
+  .mentee-card:hover { border-top-color: var(--gold); }
+
+  .mentee-initial {
+    width: 48px; height: 48px;
+    background: rgba(200,150,62,0.1);
+    border: 1px solid rgba(200,150,62,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600; color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .mentee-name {
+    font-size: 15px; font-weight: 500; color: var(--white); margin-bottom: 4px;
+  }
+  .mentee-level {
+    font-size: 11px; font-weight: 400; letter-spacing: 0.08em;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 14px;
+  }
+  .mentee-card p {
+    font-size: 13px; font-weight: 300; color: var(--text-muted);
+    line-height: 1.7; margin-bottom: 18px;
+  }
+  .mentee-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .mentee-tag {
+    font-size: 9px; font-weight: 500; letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border: 0.5px solid rgba(200,150,62,0.3); color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* Undergrad research panel */
+  .undergrad-panel {
+    background: var(--navy-light);
+    border: 0.5px solid var(--border);
+    border-left: 3px solid var(--gold);
+    padding: 36px 36px;
+    margin-top: 2px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .undergrad-panel h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 600; color: var(--white);
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .undergrad-panel p {
+    font-size: 14px; font-weight: 300; color: var(--text-muted); line-height: 1.75;
+  }
+  .project-list { display: flex; flex-direction: column; gap: 10px; }
+  .project-row {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 300; color: var(--cream-dim);
+  }
+  .project-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+  /* ===== CONTACT CTA ===== */
+  .cta-section { background: var(--navy-light); }
+  .cta-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 48px;
+    padding: 56px 0;
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .cta-inner h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 600; color: var(--white); line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .cta-inner p {
+    font-size: 15px; font-weight: 300; color: var(--text-muted); line-height: 1.7;
+  }
+  .cta-actions { display: flex; gap: 12px; flex-shrink: 0; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--navy);
+    padding: 64px 0 40px;
+    border-top: 0.5px solid var(--border);
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 56px;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600; color: var(--gold-light); margin-bottom: 6px;
+  }
+  .footer-inst {
+    font-size: 11px; font-weight: 300; letter-spacing: 0.08em;
+    color: var(--text-muted); margin-bottom: 20px;
+  }
+  .footer-brand p { font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.7; }
+  .footer-col h5 {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a {
+    font-size: 13px; font-weight: 300; color: var(--text-muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--cream); }
+  .footer-bottom {
+    padding-top: 32px; border-top: 0.5px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p { font-size: 12px; font-weight: 300; color: var(--text-muted); }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .page-eyebrow { animation: fadeUp 0.5s 0.1s both ease-out; }
+  .page-hero h1  { animation: fadeUp 0.6s 0.2s both ease-out; }
+  .page-hero-sub { animation: fadeUp 0.5s 0.35s both ease-out; }
+  .hero-philosophy { animation: fadeUp 0.6s 0.45s both ease-out; }
+
+  /* Divider */
+  .section-divider {
+    height: 0.5px; background: var(--border);
+    max-width: 1160px; margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-logo">
+    <span class="lab-name">Performance Materials Lab</span>
+    <span class="institution">University of North Carolina at Charlotte</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="#" class="active">Teaching</a></li>
+    <li><a href="#">Publications</a></li>
+    <li><a href="#">News</a></li>
+    <li><a href="#">Gallery</a></li>
+    <li><a href="#">Dr. Tipton</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ===== PAGE HERO ===== -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <div class="hero-two-col">
+      <div>
+        <div class="page-eyebrow">Performance Materials Lab &nbsp;|&nbsp; Teaching</div>
+        <h1>Engineering<br><em>From the Inside</em><br>Out</h1>
+        <p class="page-hero-sub">Two courses. One conviction: that students learn engineering best from someone who has spent decades doing it. Twenty-five years on factory floors, in boardrooms, and at startup launchpads is the curriculum that no textbook can provide.</p>
+      </div>
+      <div class="hero-philosophy">
+        <p>The gap between theory and practice is not a flaw in engineering education. It is the subject.</p>
+        <cite>Dr. Roger Tipton &nbsp;|&nbsp; Teaching Philosophy</cite>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TEACHING PHILOSOPHY ===== -->
+<section class="philosophy-section" id="philosophy">
+  <div class="container">
+    <div class="section-label">Teaching Philosophy</div>
+    <h2 class="section-heading">Three Principles That<br>Drive Every Classroom</h2>
+    <div class="pillars-grid">
+
+      <div class="pillar-card">
+        <span class="pillar-number">I</span>
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <h3>Industry Grounds Every Concept</h3>
+        <p>Every derivation, every sensor specification, every measurement standard taught in the classroom is paired with a real production, field, or product context drawn from 25 years of engineering practice. Students leave knowing not just the how, but the why it matters when the stakes are real.</p>
+      </div>
+
+      <div class="pillar-card">
+        <span class="pillar-number">II</span>
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Uncertainty Is Not an Afterthought</h3>
+        <p>Measurement without uncertainty quantification is guesswork. Students in both courses are trained to propagate error, interpret calibration records, and communicate confidence intervals the way a practicing engineer would in an ISO-compliant or regulated environment.</p>
+      </div>
+
+      <div class="pillar-card">
+        <span class="pillar-number">III</span>
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>The Midlife-PhD Perspective</h3>
+        <p>Dr. Tipton entered the PhD program after serving as a CEO. That path is unusual, and it shapes how every course is structured: with deep respect for what students are capable of, genuine enthusiasm for the discipline, and zero tolerance for teaching material that has no life outside a lecture hall.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===== COURSES ===== -->
+<section class="courses-section" id="courses">
+  <div class="container">
+    <div class="section-label">Current Courses</div>
+    <h2 class="section-heading" style="margin-bottom:48px;">Course Catalog</h2>
+
+    <!-- MEGR 3171 -->
+    <div class="course-block">
+      <div class="course-sidebar">
+        <div>
+          <div class="course-code">MEGR 3171</div>
+          <div class="course-title">Measurements &amp; Instrumentation</div>
+          <div class="course-meta-list">
+            <div class="course-meta-row">
+              <span class="course-meta-key">Level</span>
+              <span class="course-meta-val">Junior / Upper Division</span>
+            </div>
+            <div class="course-meta-row">
+              <span class="course-meta-key">Credit Hours</span>
+              <span class="course-meta-val">3</span>
+            </div>
+            <div class="course-meta-row">
+              <span class="course-meta-key">Department</span>
+              <span class="course-meta-val">Mechanical Engineering &amp; Engineering Science</span>
+            </div>
+            <div class="course-meta-row">
+              <span class="course-meta-key">Semester</span>
+              <span class="course-meta-val">Current offering</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-status">
+          <span class="status-dot-live"></span> Active Course
+        </div>
+      </div>
+      <div class="course-body">
+        <div class="course-description">
+          <p>Measurements and Instrumentation provides a rigorous foundation in the principles and practice of engineering measurement. The course covers the complete measurement chain from physical transduction through signal conditioning, data acquisition, and statistical analysis, with <strong>strong emphasis on calibration methodology, uncertainty quantification, and real instrument systems</strong>.</p>
+          <p>Topics are introduced through first principles and immediately anchored in application contexts drawn from Dr. Tipton's industry experience in manufacturing, product development, and process control. Students leave with hands-on competency in strain and temperature sensing, the ability to read and interpret calibration records, and a working understanding of data acquisition system architecture.</p>
+        </div>
+
+        <div>
+          <div class="modules-label">Topic Modules</div>
+          <div class="modules-grid">
+            <div class="module-chip">
+              <div class="module-name">Strain Measurement</div>
+              <div class="module-detail">Wheatstone bridge, gauge factor, rosette analysis</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">Temperature Sensing</div>
+              <div class="module-detail">RTDs, thermocouples, thermistors, IR methods</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">Signal Conditioning</div>
+              <div class="module-detail">Amplification, filtering, noise reduction</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">Data Acquisition</div>
+              <div class="module-detail">DAQ architecture, sampling theory, aliasing</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">Uncertainty Analysis</div>
+              <div class="module-detail">Error propagation, confidence intervals, calibration</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">Sensor Calibration</div>
+              <div class="module-detail">ISO standards, traceability, calibration records</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">Pressure &amp; Flow</div>
+              <div class="module-detail">Transducers, Pitot, differential pressure methods</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">Motion &amp; Vibration</div>
+              <div class="module-detail">Accelerometers, LVDTs, optical encoders</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">Statistical Analysis</div>
+              <div class="module-detail">Regression, hypothesis testing, data reporting</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="deliverables-row">
+          <span class="deliverables-label">Deliverables:</span>
+          <span class="deliverable-badge">PowerPoint Lecture Decks</span>
+          <span class="deliverable-badge">Teaching Guides</span>
+          <span class="deliverable-badge">Homework Sets</span>
+          <span class="deliverable-badge">Midterm Exam</span>
+          <span class="deliverable-badge">Lab Reports</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEGR 2173 -->
+    <div class="course-block" style="margin-top: 2px;">
+      <div class="course-sidebar">
+        <div>
+          <div class="course-code">MEGR 2173</div>
+          <div class="course-title">Mechatronics 1</div>
+          <div class="course-meta-list">
+            <div class="course-meta-row">
+              <span class="course-meta-key">Level</span>
+              <span class="course-meta-val">Sophomore / Lower Division</span>
+            </div>
+            <div class="course-meta-row">
+              <span class="course-meta-key">Credit Hours</span>
+              <span class="course-meta-val">3</span>
+            </div>
+            <div class="course-meta-row">
+              <span class="course-meta-key">Department</span>
+              <span class="course-meta-val">Mechanical Engineering &amp; Engineering Science</span>
+            </div>
+            <div class="course-meta-row">
+              <span class="course-meta-key">Follows</span>
+              <span class="course-meta-val">MEGR 3171 (Measurements)</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-status">
+          <span class="status-dot-live" style="animation-delay:0.5s"></span> Active Course
+        </div>
+      </div>
+      <div class="course-body">
+        <div class="course-description">
+          <p>Mechatronics 1 introduces students to the integrated design of mechanical, electrical, and computational systems. The course builds from electrical fundamentals through analog circuits, microcontroller programming, and actuator control, always with the goal of producing <strong>students who can design, build, and debug complete electromechanical systems</strong>.</p>
+          <p>Lab sessions are central to the course. Students work on physical systems throughout the semester, encountering the noise, variability, and unexpected behavior that simulation cannot replicate. The course draws explicitly on Dr. Tipton's background in manufacturing and product development to frame each concept in the context of real system design constraints.</p>
+        </div>
+
+        <div>
+          <div class="modules-label">Topic Modules</div>
+          <div class="modules-grid">
+            <div class="module-chip">
+              <div class="module-name">Circuit Fundamentals</div>
+              <div class="module-detail">Ohm's law, KVL/KCL, Thevenin/Norton equivalents</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">Analog Electronics</div>
+              <div class="module-detail">Op-amps, comparators, filters</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">Microcontrollers</div>
+              <div class="module-detail">Architecture, GPIO, timers, interrupts</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">Embedded Programming</div>
+              <div class="module-detail">C/C++, state machines, real-time logic</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">Actuators &amp; Drives</div>
+              <div class="module-detail">DC motors, steppers, servo control, H-bridge</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">Sensors &amp; Feedback</div>
+              <div class="module-detail">Encoders, hall effect, analog sensor interfacing</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">PWM &amp; Control</div>
+              <div class="module-detail">Pulse-width modulation, closed-loop basics</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">Communication Protocols</div>
+              <div class="module-detail">UART, I2C, SPI, serial debugging</div>
+            </div>
+            <div class="module-chip">
+              <div class="module-name">System Integration</div>
+              <div class="module-detail">Breadboard to PCB, design review, testing</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="deliverables-row">
+          <span class="deliverables-label">Deliverables:</span>
+          <span class="deliverable-badge">Lecture Decks</span>
+          <span class="deliverable-badge">Lab Procedures</span>
+          <span class="deliverable-badge">Homework Sets</span>
+          <span class="deliverable-badge">Midterm Exam</span>
+          <span class="deliverable-badge">Final Project</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== INDUSTRY BRIDGE ===== -->
+<section class="bridge-section" id="background">
+  <div class="container">
+    <div class="bridge-layout">
+
+      <div class="bridge-text">
+        <div class="section-label">Industry to Academia</div>
+        <h2 class="section-heading">Why Experience<br>Changes What<br>You Teach</h2>
+        <p>Most engineering faculty follow a linear path from undergraduate through PhD into a faculty position. Dr. Tipton did not. He spent <strong>more than 25 years in industry</strong> before pursuing his doctorate, and that path is the most important thing he brings into the classroom.</p>
+        <p>The result is a teacher who has seen good engineering fail in production, watched a poorly specified sensor destroy a product launch, and navigated the gap between what an equation predicts and what a machined part actually does. That context cannot be faked, and students know it.</p>
+
+        <div class="bridge-callout">
+          <p>Writing about this experience in <strong>Nature</strong> in 2022, Dr. Tipton described navigating a midlife PhD not as a career pivot, but as the natural completion of a curiosity that industry alone could not satisfy. That essay has been read by thousands of engineers and academics considering similar transitions.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label">Career Arc</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot">01</div>
+            <div class="timeline-content">
+              <div class="timeline-role">Manufacturing / Shopfloor Engineer</div>
+              <div class="timeline-note">First-hand experience with tolerance, process capability, and the cost of measurement error in production environments.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">02</div>
+            <div class="timeline-content">
+              <div class="timeline-role">Engineering Leadership</div>
+              <div class="timeline-note">Managing teams and product programs across materials, manufacturing, and product development disciplines.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">03</div>
+            <div class="timeline-content">
+              <div class="timeline-role">CEO</div>
+              <div class="timeline-note">Executive leadership of a technology company, integrating engineering, commercial, and strategic decision-making at the top level.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">04</div>
+            <div class="timeline-content">
+              <div class="timeline-role">PhD &amp; Transition to Academia</div>
+              <div class="timeline-note">Doctoral research in additive manufacturing and optical interconnects. Published in <em>Nature</em> on the midlife PhD experience.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">05</div>
+            <div class="timeline-content">
+              <div class="timeline-role">Research Associate Professor, UNC Charlotte</div>
+              <div class="timeline-note">Director of the Performance Materials Lab. Teaching Measurements &amp; Instrumentation and Mechatronics 1, with active NSF-funded research across three programs.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== STUDENT OUTCOMES ===== -->
+<section class="outcomes-section" id="outcomes">
+  <div class="container">
+    <div class="section-label">Student Development</div>
+    <h2 class="section-heading">What Students Gain</h2>
+    <div class="outcomes-layout">
+
+      <div class="outcomes-panel">
+        <h3>Competencies on Leaving These Courses</h3>
+        <div class="outcome-list">
+          <div class="outcome-item">
+            <div class="outcome-marker">1</div>
+            <div class="outcome-text"><strong>Instrument selection:</strong> Ability to match sensor technology to measurement requirements, environment, and accuracy class without over-specifying.</div>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-marker">2</div>
+            <div class="outcome-text"><strong>Uncertainty quantification:</strong> Rigorous error propagation and communication of measurement confidence, as expected in ISO-compliant and regulated environments.</div>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-marker">3</div>
+            <div class="outcome-text"><strong>Calibration literacy:</strong> Reading, interpreting, and applying calibration certificates and traceability chains to real measurement systems.</div>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-marker">4</div>
+            <div class="outcome-text"><strong>Mechatronic system design:</strong> Complete design and debugging of integrated mechanical-electrical-software systems from concept through working prototype.</div>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-marker">5</div>
+            <div class="outcome-text"><strong>Industry fluency:</strong> Vocabulary, habits of mind, and professional judgment that translate directly to engineering internships and first jobs.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="instruments-panel">
+        <h3>Instruments &amp; Tools Covered</h3>
+        <table class="instrument-table">
+          <tr>
+            <td>Strain gauges</td>
+            <td>Quarter, half, and full Wheatstone bridge configurations; rosette analysis</td>
+          </tr>
+          <tr>
+            <td>RTDs</td>
+            <td>Pt100 and Pt1000; 2-, 3-, and 4-wire configurations</td>
+          </tr>
+          <tr>
+            <td>Thermocouples</td>
+            <td>Type J, K, T; cold junction compensation; transmitters</td>
+          </tr>
+          <tr>
+            <td>DAQ systems</td>
+            <td>NI hardware; LabVIEW and Python interfaces; sampling rate selection</td>
+          </tr>
+          <tr>
+            <td>Microcontrollers</td>
+            <td>Arduino, STM32; GPIO, UART, I2C, SPI peripherals</td>
+          </tr>
+          <tr>
+            <td>Oscilloscopes</td>
+            <td>Analog signal capture, triggering, and FFT analysis</td>
+          </tr>
+          <tr>
+            <td>Actuators</td>
+            <td>DC motors, steppers, servos; H-bridge and PWM control</td>
+          </tr>
+          <tr>
+            <td>Op-amp circuits</td>
+            <td>Instrumentation amplifiers, filters, comparator configurations</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== GRADUATE MENTORING ===== -->
+<section class="mentoring-section" id="mentoring">
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:8px; gap:32px;">
+      <div>
+        <div class="section-label">Graduate &amp; Undergraduate Mentoring</div>
+        <h2 class="section-heading">The People Doing the Work</h2>
+      </div>
+    </div>
+    <p style="font-size:16px; font-weight:300; color:var(--text-muted); max-width:580px; line-height:1.75; margin-bottom:48px;">Teaching at the PML extends well beyond the lecture room. Graduate students receive intensive mentorship across all three research programs, with Dr. Tipton involved in proposal writing, manuscript development, and conference preparation.</p>
+
+    <div class="mentoring-grid">
+
+      <div class="mentee-card">
+        <div class="mentee-initial">A</div>
+        <div class="mentee-name">Md. Shah Nawaz Arafin</div>
+        <div class="mentee-level">PhD Candidate</div>
+        <p>Lead researcher on the microplastics fracture mechanics and cytotoxicity program. Three manuscripts in preparation. Dr. Tipton submitted a recommendation letter for the NC Coastal Research Fellowship and for the Residential Graduate Life Fellow program on Arafin's behalf.</p>
+        <div class="mentee-tags">
+          <span class="mentee-tag">Microplastics</span>
+          <span class="mentee-tag">JSF / FVM</span>
+          <span class="mentee-tag">PFAS Sampling</span>
+          <span class="mentee-tag">NC Coastal Fellowship</span>
+        </div>
+      </div>
+
+      <div class="mentee-card">
+        <div class="mentee-initial">E</div>
+        <div class="mentee-name">Ergonomics &amp; Wearables Collaboration</div>
+        <div class="mentee-level">Graduate Research</div>
+        <p>Collaborative wearable sensor ergonomics study examining masonry saw stabilization, co-authored with Arafin and Carpentier. Prepared for submission to IISE Transactions on Occupational Ergonomics and Human Factors and revised through editorial review.</p>
+        <div class="mentee-tags">
+          <span class="mentee-tag">Wearable Sensors</span>
+          <span class="mentee-tag">Ergonomics</span>
+          <span class="mentee-tag">IISE Transactions</span>
+        </div>
+      </div>
+
+      <div class="mentee-card" style="border-top-color:rgba(200,150,62,0.35);">
+        <div class="mentee-initial">U</div>
+        <div class="mentee-name">Undergraduate Researchers</div>
+        <div class="mentee-level">Four Active PML Projects</div>
+        <p>The PML accepts undergraduate research applicants each semester across all active research programs. Students contribute to experimental work, data analysis, and literature review, gaining experience in a funded research environment from their earliest years.</p>
+        <div class="mentee-tags">
+          <span class="mentee-tag">BAM Ceramics</span>
+          <span class="mentee-tag">PFAS Sampling</span>
+          <span class="mentee-tag">Microplastics</span>
+          <span class="mentee-tag">Materials Characterization</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Undergrad research panel -->
+    <div class="undergrad-panel">
+      <div>
+        <h3>Undergraduate Research Opportunities</h3>
+        <p>The PML maintains four active undergraduate research tracks, reviewed each semester. Students work alongside PhD candidates and gain direct exposure to NSF-funded research programs, laboratory techniques, and the full research lifecycle from experiment design through publication.</p>
+      </div>
+      <div>
+        <div class="project-list">
+          <div class="project-row"><span class="project-dot"></span> AlMgB14 optical and thermal characterization</div>
+          <div class="project-row"><span class="project-dot"></span> PFAS water sample preparation and analysis</div>
+          <div class="project-row"><span class="project-dot"></span> Microplastic particle imaging and shape analysis</div>
+          <div class="project-row"><span class="project-dot"></span> Sustainable composite materials development</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section" style="padding: 0;">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2>Interested in Joining the Lab?</h2>
+        <p>Graduate and undergraduate positions are reviewed on a rolling basis. Prospective PhD students are encouraged to reach out directly with a brief statement of research interest and a current CV.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#" class="btn-primary">Contact Dr. Tipton</a>
+        <a href="research.html" class="btn-ghost">View Research</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Performance Materials Lab</div>
+        <div class="footer-inst">The William States Lee College of Engineering &nbsp;|&nbsp; UNC Charlotte</div>
+        <p>Advancing materials science and clean water research through rigorous inquiry, field science, and a commitment to real-world impact.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Research</h5>
+        <ul>
+          <li><a href="#">BAM Ceramics</a></li>
+          <li><a href="#">PFAS &amp; Ocean</a></li>
+          <li><a href="#">Microplastics</a></li>
+          <li><a href="#">Publications</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Teaching</h5>
+        <ul>
+          <li><a href="#courses">MEGR 3171</a></li>
+          <li><a href="#courses">MEGR 2173</a></li>
+          <li><a href="#philosophy">Philosophy</a></li>
+          <li><a href="#mentoring">Mentoring</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="#">EPIC Hall, Room 3186</a></li>
+          <li><a href="#">UNC Charlotte</a></li>
+          <li><a href="mailto:rtipton2@charlotte.edu">rtipton2@charlotte.edu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Performance Materials Laboratory, UNC Charlotte. All rights reserved.</p>
+      <p style="color:rgba(244,239,230,0.3)">Customizr Theme | WordPress</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
