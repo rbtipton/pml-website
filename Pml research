@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research | Performance Materials Lab | UNC Charlotte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy:       #0b1929;
+    --navy-mid:   #142036;
+    --navy-light: #1e3050;
+    --gold:       #c8963e;
+    --gold-light: #e8b86d;
+    --cream:      #f4efe6;
+    --cream-dim:  #ddd5c3;
+    --white:      #ffffff;
+    --text-muted: rgba(244,239,230,0.55);
+    --border:     rgba(200,150,62,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--navy);
+    color: var(--cream);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 48px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(11,25,41,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo { display: flex; flex-direction: column; gap: 1px; }
+  .nav-logo .lab-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-weight: 600;
+    color: var(--gold-light); letter-spacing: 0.03em; line-height: 1;
+  }
+  .nav-logo .institution {
+    font-size: 10px; font-weight: 400;
+    color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--cream-dim); text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+
+  /* ===== PAGE HERO ===== */
+  .page-hero {
+    padding: 140px 48px 80px;
+    background: var(--navy-mid);
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(200,150,62,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,150,62,0.035) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+  }
+  .page-hero-content { position: relative; max-width: 1160px; margin: 0 auto; }
+  .page-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+  }
+  .page-eyebrow::before {
+    content: ''; display: block; width: 24px; height: 1px; background: var(--gold);
+  }
+  .page-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 6vw, 76px);
+    font-weight: 600; line-height: 1.05; color: var(--white);
+    margin-bottom: 20px;
+  }
+  .page-hero h1 em { font-style: italic; color: var(--gold-light); }
+  .page-hero-sub {
+    font-size: 17px; font-weight: 300; color: var(--text-muted);
+    max-width: 640px; line-height: 1.75; margin-bottom: 48px;
+  }
+  .program-tabs {
+    display: flex; gap: 2px;
+  }
+  .tab-btn {
+    padding: 12px 24px;
+    background: rgba(200,150,62,0.06);
+    border: 0.5px solid var(--border);
+    color: var(--text-muted);
+    font-family: 'Jost', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; cursor: pointer;
+    transition: all 0.2s; text-decoration: none; display: inline-block;
+  }
+  .tab-btn:hover { background: rgba(200,150,62,0.12); color: var(--cream); }
+  .tab-btn.active {
+    background: var(--gold); color: var(--navy); border-color: var(--gold);
+  }
+
+  /* ===== UTILITY ===== */
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+  section { padding: 88px 0; }
+
+  .section-label {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+  }
+  .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 600; color: var(--white); line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border: 0.5px solid var(--gold);
+    color: var(--gold-light); font-family: 'Jost', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none; transition: background 0.2s;
+  }
+  .btn-ghost:hover { background: rgba(200,150,62,0.1); }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; background: var(--gold);
+    color: var(--navy); font-family: 'Jost', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+
+  /* ===== OVERVIEW STATS ===== */
+  .overview-stats {
+    background: var(--navy);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-left: 0.5px solid var(--border);
+  }
+  .stat-cell {
+    padding: 44px 36px;
+    border-right: 0.5px solid var(--border);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .stat-cell-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 600; color: var(--gold-light); line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-cell-label {
+    font-size: 11px; font-weight: 400; color: var(--text-muted);
+    letter-spacing: 0.06em; line-height: 1.5;
+  }
+
+  /* ===== PROGRAM SECTIONS ===== */
+
+  /* BAM */
+  .program-bam { background: var(--navy-mid); }
+
+  .program-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .program-layout.reverse { direction: rtl; }
+  .program-layout.reverse > * { direction: ltr; }
+
+  .program-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px; font-weight: 400;
+    color: rgba(200,150,62,0.07);
+    line-height: 1;
+    margin-bottom: -20px;
+    user-select: none;
+  }
+
+  .program-text h2 { margin-bottom: 24px; }
+  .program-text p {
+    font-size: 15px; font-weight: 300; color: var(--text-muted);
+    line-height: 1.85; margin-bottom: 18px;
+  }
+  .program-text p strong { color: var(--cream); font-weight: 500; }
+
+  .finding-block {
+    background: var(--navy-light);
+    border-left: 3px solid var(--gold);
+    padding: 20px 24px;
+    margin: 28px 0;
+  }
+  .finding-block p {
+    font-size: 14px !important;
+    font-style: italic;
+    color: var(--cream-dim) !important;
+    margin: 0 !important;
+  }
+  .finding-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .program-meta {
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 0.5px solid var(--border);
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .meta-row { display: flex; gap: 12px; align-items: baseline; }
+  .meta-key {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold);
+    min-width: 120px; flex-shrink: 0;
+  }
+  .meta-val { font-size: 14px; font-weight: 300; color: var(--text-muted); }
+  .meta-val strong { color: var(--cream); font-weight: 500; }
+
+  /* Visual panel */
+  .program-visual {
+    position: sticky;
+    top: 100px;
+  }
+
+  .visual-frame {
+    background: var(--navy-light);
+    border: 0.5px solid var(--border);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .visual-frame::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  .diagram-title {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  /* BAM crystal diagram */
+  .bam-diagram { text-align: center; padding: 16px 0; }
+  .bam-diagram svg { width: 100%; max-width: 320px; height: auto; }
+
+  /* Ocean map */
+  .ocean-visual { text-align: center; }
+  .ocean-visual svg { width: 100%; height: auto; }
+
+  /* Particle visual */
+  .particle-visual { position: relative; }
+  .particle-visual svg { width: 100%; height: auto; }
+
+  .visual-caption {
+    font-size: 12px; font-weight: 300; color: var(--text-muted);
+    margin-top: 20px; line-height: 1.6; text-align: center;
+  }
+
+  /* tags */
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 24px 0; }
+  .tag {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 4px 10px;
+    border: 0.5px solid rgba(200,150,62,0.4); color: var(--gold);
+  }
+
+  /* separating rule between programs */
+  .program-divider {
+    height: 0.5px;
+    background: var(--border);
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  /* ===== ACTIVE GRANTS ===== */
+  .grants-section { background: var(--navy-light); }
+  .grants-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 52px;
+  }
+  .grant-card {
+    background: var(--navy-mid);
+    padding: 36px 32px;
+    border-top: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .grant-card:hover { border-top-color: var(--gold); }
+  .grant-badge {
+    display: inline-flex;
+    padding: 4px 10px;
+    border: 0.5px solid rgba(200,150,62,0.4);
+    font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .grant-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600; color: var(--white);
+    line-height: 1.25; margin-bottom: 12px;
+  }
+  .grant-card p {
+    font-size: 13px; font-weight: 300; color: var(--text-muted);
+    line-height: 1.7; margin-bottom: 24px;
+  }
+  .grant-detail { display: flex; flex-direction: column; gap: 8px; }
+  .grant-row { display: flex; justify-content: space-between; align-items: baseline; }
+  .grant-key {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-muted);
+  }
+  .grant-val { font-size: 13px; font-weight: 400; color: var(--cream-dim); }
+
+  /* ===== PATENTS ===== */
+  .patents-section { background: var(--navy-mid); }
+  .patents-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 48px;
+  }
+  .patent-card {
+    background: var(--navy);
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-left: 2px solid var(--border);
+    transition: border-color 0.2s;
+  }
+  .patent-card:hover { border-left-color: var(--gold); }
+  .patent-num {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .patent-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600; color: var(--white); line-height: 1.2;
+  }
+  .patent-card p {
+    font-size: 14px; font-weight: 300; color: var(--text-muted); line-height: 1.75;
+  }
+  .patent-status {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 500; color: var(--gold-light);
+  }
+  .status-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.35; }
+  }
+
+  /* ===== SELECT PUBLICATIONS ===== */
+  .pubs-section { background: var(--navy); }
+  .pubs-list { margin-top: 48px; display: flex; flex-direction: column; gap: 2px; }
+  .pub-item {
+    background: var(--navy-mid);
+    padding: 28px 32px;
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    transition: background 0.2s;
+  }
+  .pub-item:hover { background: var(--navy-light); }
+  .pub-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 400; color: var(--gold);
+    min-width: 52px; line-height: 1; padding-top: 2px;
+  }
+  .pub-body { flex: 1; }
+  .pub-title {
+    font-size: 15px; font-weight: 500; color: var(--white);
+    line-height: 1.4; margin-bottom: 6px; text-decoration: none;
+    display: block;
+  }
+  .pub-title:hover { color: var(--gold-light); }
+  .pub-authors {
+    font-size: 13px; font-weight: 300; color: var(--text-muted); margin-bottom: 6px;
+  }
+  .pub-journal {
+    font-size: 12px; font-style: italic; color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .pub-type {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 4px 10px;
+    border: 0.5px solid var(--border); color: var(--text-muted);
+    flex-shrink: 0; height: fit-content; margin-top: 4px;
+  }
+
+  /* ===== FIELD CAMPAIGNS ===== */
+  .field-section { background: var(--navy-light); }
+  .campaigns-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 52px;
+  }
+  .campaign-card {
+    background: var(--navy-mid);
+    padding: 36px 28px;
+    border-top: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .campaign-card:hover { border-top-color: var(--gold); }
+  .campaign-date {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+  }
+  .campaign-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600; color: var(--white);
+    line-height: 1.2; margin-bottom: 10px;
+  }
+  .campaign-card p {
+    font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .campaign-sites { display: flex; flex-direction: column; gap: 6px; }
+  .site-row {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 300; color: var(--cream-dim);
+  }
+  .site-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--navy);
+    padding: 64px 0 40px;
+    border-top: 0.5px solid var(--border);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 56px;
+  }
+  .footer-brand {}
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600; color: var(--gold-light); margin-bottom: 6px;
+  }
+  .footer-inst {
+    font-size: 11px; font-weight: 300; letter-spacing: 0.08em;
+    color: var(--text-muted); margin-bottom: 20px;
+  }
+  .footer-brand p { font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.7; }
+  .footer-col h5 {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a {
+    font-size: 13px; font-weight: 300; color: var(--text-muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--cream); }
+  .footer-bottom {
+    padding-top: 32px;
+    border-top: 0.5px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p { font-size: 12px; font-weight: 300; color: var(--text-muted); }
+
+  /* ===== PAGE ANIMATION ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .page-eyebrow { animation: fadeUp 0.5s 0.1s both ease-out; }
+  .page-hero h1  { animation: fadeUp 0.6s 0.2s both ease-out; }
+  .page-hero-sub { animation: fadeUp 0.5s 0.35s both ease-out; }
+  .program-tabs  { animation: fadeUp 0.5s 0.5s both ease-out; }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-logo">
+    <span class="lab-name">Performance Materials Lab</span>
+    <span class="institution">University of North Carolina at Charlotte</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#" class="active">Research</a></li>
+    <li><a href="#">Teaching</a></li>
+    <li><a href="#">Publications</a></li>
+    <li><a href="#">News</a></li>
+    <li><a href="#">Gallery</a></li>
+    <li><a href="#">Dr. Tipton</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ===== PAGE HERO ===== -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <div class="page-eyebrow">Performance Materials Lab &nbsp;|&nbsp; Research Programs</div>
+    <h1>From the Atomic<br>to the <em>Oceanic</em></h1>
+    <p class="page-hero-sub">Three active research programs connecting fundamental materials science to the most pressing environmental challenges of our time. Each program runs from bench-level discovery through field-scale validation.</p>
+    <div class="program-tabs">
+      <a href="#bam" class="tab-btn active">01 &nbsp; BAM Ceramics</a>
+      <a href="#pfas" class="tab-btn">02 &nbsp; PFAS &amp; Ocean Science</a>
+      <a href="#microplastics" class="tab-btn">03 &nbsp; Microplastics</a>
+      <a href="#grants" class="tab-btn">Grants &amp; Patents</a>
+      <a href="#publications" class="tab-btn">Publications</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== OVERVIEW STATS ===== -->
+<section class="overview-stats" style="padding: 0;">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-cell">
+        <div class="stat-cell-num">3</div>
+        <div class="stat-cell-label">Active NSF<br>Research Programs</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-num">2</div>
+        <div class="stat-cell-label">Pending Patent<br>Applications</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-num">4</div>
+        <div class="stat-cell-label">Manuscripts in<br>Preparation</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-num">6+</div>
+        <div class="stat-cell-label">Ocean Field<br>Campaigns</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROGRAM 01: BAM ===== -->
+<section class="program-bam" id="bam">
+  <div class="container">
+    <div class="program-layout">
+
+      <div class="program-text">
+        <div class="program-number">01</div>
+        <div class="section-label">Advanced Materials</div>
+        <h2 class="section-heading">AlMgB<sub style="font-size:0.65em">14</sub> Ceramic Coatings</h2>
+        <p>The Performance Materials Lab holds two pending patent applications on AlMgB14, commonly known as <strong>BAM ceramic</strong>. This ultra-hard boride ceramic is being developed as a PFAS-free replacement for polytetrafluoroethylene (Teflon) in both cookware coatings and industrial surface applications.</p>
+        <p>Our group has performed the <strong>first-ever optical characterization</strong> of BAM, building a formal lab research record (PML-OPT-2024-001). These measurements have revealed semiconducting behavior in the material, a finding that directly contradicts prior theoretical predictions of metallic character.</p>
+
+        <div class="finding-block">
+          <div class="finding-label">Key Discovery</div>
+          <p>Optical characterization of BAM reveals semiconducting electronic structure. This result overturns prior theoretical consensus and opens new application pathways in functional coatings and optoelectronics.</p>
+        </div>
+
+        <p>A full NSF DMR/CER fundamental science proposal is in active development, targeting Physical Review Materials for publication of the optical and thermal characterization findings. This work also supports two patent applications: one for a PFAS-free cookware coating and one for a surface functionalization method.</p>
+
+        <div class="tag-row">
+          <span class="tag">NSF DMR/CER</span>
+          <span class="tag">Patent Pending x2</span>
+          <span class="tag">PFAS-Free</span>
+          <span class="tag">Semiconductor</span>
+          <span class="tag">Optical Characterization</span>
+        </div>
+
+        <div class="program-meta">
+          <div class="meta-row">
+            <span class="meta-key">Target Outlet</span>
+            <span class="meta-val">Physical Review Materials</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">Lab Record</span>
+            <span class="meta-val">PML-OPT-2024-001</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">Applications</span>
+            <span class="meta-val">Cookware coating, industrial surface functionalization</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">Funding Stage</span>
+            <span class="meta-val"><strong>Proposal in development</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-visual">
+        <div class="visual-frame">
+          <div class="diagram-title">BAM Crystal Electronic Character</div>
+          <div class="bam-diagram">
+            <svg viewBox="0 0 340 280" xmlns="http://www.w3.org/2000/svg">
+              <!-- Energy band diagram -->
+              <!-- Axes -->
+              <line x1="40" y1="240" x2="300" y2="240" stroke="rgba(244,239,230,0.15)" stroke-width="1"/>
+              <line x1="40" y1="20" x2="40" y2="240" stroke="rgba(244,239,230,0.15)" stroke-width="1"/>
+              <text x="170" y="265" font-family="Jost, sans-serif" font-size="10" fill="rgba(244,239,230,0.4)" text-anchor="middle" letter-spacing="1">k-vector</text>
+              <text x="18" y="130" font-family="Jost, sans-serif" font-size="10" fill="rgba(244,239,230,0.4)" text-anchor="middle" letter-spacing="1" transform="rotate(-90,18,130)">Energy (eV)</text>
+
+              <!-- Fermi level dashed line -->
+              <line x1="40" y1="140" x2="300" y2="140" stroke="rgba(200,150,62,0.35)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="305" y="143" font-family="Jost, sans-serif" font-size="9" fill="rgba(200,150,62,0.7)">E&#8321;</text>
+
+              <!-- Conduction band -->
+              <path d="M60,90 Q110,70 170,80 Q230,90 280,70" fill="none" stroke="#e8b86d" stroke-width="2"/>
+              <!-- Conduction band shading -->
+              <path d="M60,90 Q110,70 170,80 Q230,90 280,70 L280,20 L60,20 Z" fill="rgba(200,150,62,0.06)"/>
+              <text x="172" y="40" font-family="Jost, sans-serif" font-size="10" fill="rgba(232,184,109,0.7)" text-anchor="middle">Conduction Band</text>
+
+              <!-- Band gap -->
+              <rect x="40" y="115" width="260" height="40" fill="rgba(200,150,62,0.04)"/>
+              <line x1="56" y1="127" x2="76" y2="127" stroke="rgba(200,150,62,0.5)" stroke-width="0.5"/>
+              <line x1="56" y1="153" x2="76" y2="153" stroke="rgba(200,150,62,0.5)" stroke-width="0.5"/>
+              <line x1="66" y1="127" x2="66" y2="153" stroke="rgba(200,150,62,0.5)" stroke-width="0.5"/>
+              <text x="85" y="141" font-family="Jost, sans-serif" font-size="9" fill="rgba(200,150,62,0.8)">Band gap (Eg) &gt; 0</text>
+              <text x="85" y="153" font-family="Jost, sans-serif" font-size="8" fill="rgba(200,150,62,0.5)">Semiconducting behavior confirmed</text>
+
+              <!-- Valence band -->
+              <path d="M60,165 Q110,185 170,175 Q230,165 280,185" fill="none" stroke="#e8b86d" stroke-width="2"/>
+              <path d="M60,165 Q110,185 170,175 Q230,165 280,185 L280,240 L60,240 Z" fill="rgba(200,150,62,0.08)"/>
+              <text x="172" y="218" font-family="Jost, sans-serif" font-size="10" fill="rgba(232,184,109,0.7)" text-anchor="middle">Valence Band</text>
+
+              <!-- Prior theory label -->
+              <line x1="170" y1="112" x2="170" y2="158" stroke="rgba(244,239,230,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
+              <text x="172" y="108" font-family="Jost, sans-serif" font-size="9" fill="rgba(244,239,230,0.35)" text-anchor="middle">Prior theory: metallic</text>
+            </svg>
+          </div>
+          <p class="visual-caption">Schematic energy band structure from PML optical characterization. BAM shows a measurable band gap, confirming semiconducting character contradicting metallic predictions.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="program-divider"></div>
+
+<!-- ===== PROGRAM 02: PFAS ===== -->
+<section style="background: var(--navy); padding: 88px 0;" id="pfas">
+  <div class="container">
+    <div class="program-layout reverse">
+
+      <div class="program-text">
+        <div class="program-number">02</div>
+        <div class="section-label">Environmental Science</div>
+        <h2 class="section-heading">PFAS &amp; Ocean<br>Contamination</h2>
+        <p>Per- and polyfluoroalkyl substances (PFAS) are persistent environmental contaminants found in increasingly remote ocean environments. The PML is building the first rigorous <strong>global baseline dataset</strong> for ocean PFAS concentrations, spanning Arctic polar stations to Caribbean open waters.</p>
+        <p>This program operates in active partnership with the <strong>Sustainable Seas Institute</strong> and its research vessel R/V Dawn, providing unique sampling access to locations that are logistically inaccessible to conventional research programs. Field campaigns in 2025 reached the geographic North Pole, the magnetic North Pole, and the Arctic pole of inaccessibility.</p>
+        <p>A global synthesis manuscript co-authored with researchers from the University of Rhode Island is in preparation, targeting <strong>Nature Water</strong>. A companion NSF Chemical Oceanography proposal targets an Indian River Lagoon PFAS baseline study.</p>
+
+        <div class="finding-block">
+          <div class="finding-label">Sampling Reach</div>
+          <p>PML field campaigns have collected samples from the geographic North Pole, the magnetic North Pole, the Arctic pole of inaccessibility, and multiple Caribbean open-ocean stations aboard R/V Dawn, with South Pacific expansion underway.</p>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">NSF EAGER #2444939</span>
+          <span class="tag">Nature Water Target</span>
+          <span class="tag">R/V Dawn</span>
+          <span class="tag">Arctic Sampling</span>
+          <span class="tag">Caribbean Baseline</span>
+        </div>
+
+        <div class="program-meta">
+          <div class="meta-row">
+            <span class="meta-key">Award</span>
+            <span class="meta-val"><strong>NSF EAGER #2444939</strong>, Active</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">Target Outlet</span>
+            <span class="meta-val">Nature Water (synthesis manuscript)</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">Co-investigators</span>
+            <span class="meta-val">Arafin, M. Sun, R. Lohmann, J. Becanova</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">Vessel</span>
+            <span class="meta-val">R/V Dawn, Sustainable Seas Institute</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">Pending Proposal</span>
+            <span class="meta-val">NSF Chemical Oceanography, Indian River Lagoon</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-visual">
+        <div class="visual-frame">
+          <div class="diagram-title">Global Sampling Network</div>
+          <div class="ocean-visual">
+            <svg viewBox="0 0 340 240" xmlns="http://www.w3.org/2000/svg">
+              <!-- Simplified world map silhouette blocks -->
+              <!-- North America -->
+              <rect x="30" y="50" width="70" height="70" rx="4" fill="rgba(30,48,80,0.9)" stroke="rgba(200,150,62,0.2)" stroke-width="0.5"/>
+              <text x="65" y="90" font-family="Jost" font-size="8" fill="rgba(244,239,230,0.3)" text-anchor="middle">N. America</text>
+              <!-- S. America -->
+              <rect x="55" y="130" width="45" height="55" rx="4" fill="rgba(30,48,80,0.9)" stroke="rgba(200,150,62,0.2)" stroke-width="0.5"/>
+              <text x="77" y="160" font-family="Jost" font-size="7" fill="rgba(244,239,230,0.3)" text-anchor="middle">S. America</text>
+              <!-- Europe -->
+              <rect x="145" y="42" width="38" height="38" rx="4" fill="rgba(30,48,80,0.9)" stroke="rgba(200,150,62,0.2)" stroke-width="0.5"/>
+              <text x="164" y="64" font-family="Jost" font-size="7" fill="rgba(244,239,230,0.3)" text-anchor="middle">Europe</text>
+              <!-- Africa -->
+              <rect x="150" y="90" width="48" height="75" rx="4" fill="rgba(30,48,80,0.9)" stroke="rgba(200,150,62,0.2)" stroke-width="0.5"/>
+              <text x="174" y="132" font-family="Jost" font-size="7" fill="rgba(244,239,230,0.3)" text-anchor="middle">Africa</text>
+              <!-- Asia -->
+              <rect x="195" y="30" width="80" height="75" rx="4" fill="rgba(30,48,80,0.9)" stroke="rgba(200,150,62,0.2)" stroke-width="0.5"/>
+              <text x="235" y="70" font-family="Jost" font-size="8" fill="rgba(244,239,230,0.3)" text-anchor="middle">Asia</text>
+              <!-- Australia -->
+              <rect x="245" y="140" width="50" height="38" rx="4" fill="rgba(30,48,80,0.9)" stroke="rgba(200,150,62,0.2)" stroke-width="0.5"/>
+              <text x="270" y="162" font-family="Jost" font-size="7" fill="rgba(244,239,230,0.3)" text-anchor="middle">Australia</text>
+
+              <!-- Sample sites -->
+              <!-- Arctic / North Pole -->
+              <circle cx="185" cy="15" r="7" fill="rgba(200,150,62,0.2)" stroke="#c8963e" stroke-width="1.5"/>
+              <circle cx="185" cy="15" r="3" fill="#e8b86d"/>
+              <text x="197" y="18" font-family="Jost" font-size="8" fill="#e8b86d">Arctic (x3 sites)</text>
+
+              <!-- Caribbean -->
+              <circle cx="78" cy="118" r="6" fill="rgba(200,150,62,0.2)" stroke="#c8963e" stroke-width="1.5"/>
+              <circle cx="78" cy="118" r="2.5" fill="#e8b86d"/>
+              <text x="87" y="121" font-family="Jost" font-size="8" fill="#e8b86d">Caribbean</text>
+
+              <!-- Indian River Lagoon -->
+              <circle cx="98" cy="100" r="5" fill="rgba(200,150,62,0.1)" stroke="rgba(200,150,62,0.6)" stroke-width="1" stroke-dasharray="2 2"/>
+              <text x="107" y="103" font-family="Jost" font-size="7" fill="rgba(200,150,62,0.6)">IRL (planned)</text>
+
+              <!-- South Pacific -->
+              <circle cx="295" cy="175" r="5" fill="rgba(200,150,62,0.1)" stroke="rgba(200,150,62,0.6)" stroke-width="1" stroke-dasharray="2 2"/>
+              <text x="260" y="195" font-family="Jost" font-size="7" fill="rgba(200,150,62,0.6)">S. Pacific (planned)</text>
+
+              <!-- Connection lines -->
+              <line x1="185" y1="22" x2="78" y2="112" stroke="rgba(200,150,62,0.2)" stroke-width="0.75" stroke-dasharray="3 3"/>
+
+              <!-- Legend -->
+              <circle cx="22" cy="210" r="4" fill="rgba(200,150,62,0.2)" stroke="#c8963e" stroke-width="1.5"/>
+              <circle cx="22" cy="210" r="1.5" fill="#e8b86d"/>
+              <text x="30" y="213" font-family="Jost" font-size="8" fill="rgba(244,239,230,0.55)">Sampled</text>
+              <circle cx="90" cy="210" r="4" fill="rgba(200,150,62,0.1)" stroke="rgba(200,150,62,0.5)" stroke-width="1" stroke-dasharray="2 2"/>
+              <text x="98" y="213" font-family="Jost" font-size="8" fill="rgba(244,239,230,0.55)">In planning</text>
+            </svg>
+          </div>
+          <p class="visual-caption">PML ocean PFAS sampling network. Active campaigns span Arctic polar stations and Caribbean open waters. South Pacific and Indian River Lagoon sites are in planning.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="program-divider"></div>
+
+<!-- ===== PROGRAM 03: MICROPLASTICS ===== -->
+<section style="background: var(--navy-mid); padding: 88px 0;" id="microplastics">
+  <div class="container">
+    <div class="program-layout">
+
+      <div class="program-text">
+        <div class="program-number">03</div>
+        <div class="section-label">Fracture Mechanics &amp; Biointerface</div>
+        <h2 class="section-heading">Microplastics Fracture<br>&amp; Cytotoxicity</h2>
+        <p>Environmental microplastics span enormous variation in particle shape. Existing toxicity models treat shape as a secondary variable, yet the jagged geometry of fractured particles directly governs how they interact with cell membranes. The PML is developing a quantitative framework that makes particle shape a <strong>first-class mechanistic variable</strong> in cytotoxicity prediction.</p>
+        <p>Our group has introduced the <strong>Jagged Shape Factor (JSF)</strong> and the <strong>Fracture Vertex Model (FVM)</strong> to characterize and predict shape-driven toxicological behavior. PhD student Md. Shah Nawaz Arafin leads this experimental and computational program, with three manuscripts in preparation.</p>
+        <p>An NSF CBET Interfacial Engineering proposal is in development, supported by a full budget, facilities gap analysis, and scientific white paper. The program complements our ocean contamination work by providing mechanistic insight into the downstream biological effects of the particles we detect in field campaigns.</p>
+
+        <div class="finding-block">
+          <div class="finding-label">Novel Framework</div>
+          <p>The Jagged Shape Factor (JSF) and Fracture Vertex Model (FVM) provide the first quantitative link between microplastic fracture surface geometry and predicted cytotoxicity, enabling shape-informed environmental risk assessment.</p>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">NSF CBET (Pending)</span>
+          <span class="tag">Jagged Shape Factor</span>
+          <span class="tag">Fracture Vertex Model</span>
+          <span class="tag">3 Manuscripts Prep</span>
+        </div>
+
+        <div class="program-meta">
+          <div class="meta-row">
+            <span class="meta-key">Lead Researcher</span>
+            <span class="meta-val">Md. Shah Nawaz Arafin, PhD candidate</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">Pending Award</span>
+            <span class="meta-val">NSF CBET Interfacial Engineering</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">Frameworks</span>
+            <span class="meta-val">JSF (Jagged Shape Factor), FVM (Fracture Vertex Model)</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">Outputs</span>
+            <span class="meta-val"><strong>3 manuscripts in preparation</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-visual">
+        <div class="visual-frame">
+          <div class="diagram-title">Jagged Shape Factor Framework</div>
+          <div class="particle-visual">
+            <svg viewBox="0 0 340 300" xmlns="http://www.w3.org/2000/svg">
+              <!-- Axis labels -->
+              <text x="170" y="290" font-family="Jost" font-size="9" fill="rgba(244,239,230,0.4)" text-anchor="middle" letter-spacing="1">JSF (Jagged Shape Factor)</text>
+              <text x="14" y="150" font-family="Jost" font-size="9" fill="rgba(244,239,230,0.4)" text-anchor="middle" letter-spacing="1" transform="rotate(-90,14,150)">Cytotoxicity Risk</text>
+
+              <!-- Axes -->
+              <line x1="40" y1="250" x2="310" y2="250" stroke="rgba(244,239,230,0.15)" stroke-width="1"/>
+              <line x1="40" y1="30" x2="40" y2="250" stroke="rgba(244,239,230,0.15)" stroke-width="1"/>
+
+              <!-- Trend zone -->
+              <path d="M60,220 Q130,185 200,140 Q250,105 290,65" fill="none" stroke="rgba(200,150,62,0.5)" stroke-width="2"/>
+              <path d="M60,230 Q130,200 200,155 Q250,125 290,85 L290,65 Q250,105 200,140 Q130,185 60,220 Z" fill="rgba(200,150,62,0.07)"/>
+
+              <!-- Low JSF particle (smooth, round) -->
+              <ellipse cx="95" cy="200" rx="24" ry="20" fill="rgba(30,48,80,0.8)" stroke="rgba(200,150,62,0.4)" stroke-width="1"/>
+              <text x="95" y="204" font-family="Jost" font-size="8" fill="rgba(244,239,230,0.5)" text-anchor="middle">round</text>
+              <text x="95" y="232" font-family="Jost" font-size="8" fill="rgba(244,239,230,0.3)" text-anchor="middle">low JSF</text>
+
+              <!-- Mid JSF particle -->
+              <polygon points="185,120 200,98 218,112 215,132 196,140 175,130" fill="rgba(30,48,80,0.8)" stroke="rgba(200,150,62,0.5)" stroke-width="1"/>
+              <text x="196" y="122" font-family="Jost" font-size="7" fill="rgba(244,239,230,0.5)" text-anchor="middle">jagged</text>
+              <text x="196" y="158" font-family="Jost" font-size="8" fill="rgba(244,239,230,0.3)" text-anchor="middle">mid JSF</text>
+
+              <!-- High JSF particle (very jagged) -->
+              <polygon points="268,50 275,38 284,48 293,40 295,58 284,68 274,62 265,70 260,58 255,46" fill="rgba(30,48,80,0.8)" stroke="#c8963e" stroke-width="1.5"/>
+              <text x="275" y="59" font-family="Jost" font-size="7" fill="rgba(200,150,62,0.9)" text-anchor="middle">fractured</text>
+              <text x="275" y="90" font-family="Jost" font-size="8" fill="rgba(200,150,62,0.7)" text-anchor="middle">high JSF</text>
+
+              <!-- FVM annotation -->
+              <line x1="295" y1="58" x2="315" y2="45" stroke="rgba(200,150,62,0.4)" stroke-width="0.75"/>
+              <text x="316" y="42" font-family="Jost" font-size="8" fill="rgba(200,150,62,0.7)">FVM vertices</text>
+
+              <!-- Axis tick labels -->
+              <text x="40" y="265" font-family="Jost" font-size="8" fill="rgba(244,239,230,0.3)" text-anchor="middle">0</text>
+              <text x="310" y="265" font-family="Jost" font-size="8" fill="rgba(244,239,230,0.3)" text-anchor="middle">High</text>
+              <text x="32" y="253" font-family="Jost" font-size="8" fill="rgba(244,239,230,0.3)" text-anchor="end">Low</text>
+              <text x="32" y="38" font-family="Jost" font-size="8" fill="rgba(244,239,230,0.3)" text-anchor="end">High</text>
+            </svg>
+          </div>
+          <p class="visual-caption">Conceptual relationship between Jagged Shape Factor and cytotoxicity risk. Fractured, high-vertex particles present greater membrane interaction risk per the Fracture Vertex Model.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== GRANTS & PATENTS ===== -->
+<section class="grants-section" id="grants">
+  <div class="container">
+    <div class="section-label">Funding &amp; Intellectual Property</div>
+    <h2 class="section-heading">Active Grants &amp; Pending Patents</h2>
+
+    <div class="grants-grid">
+      <div class="grant-card">
+        <span class="grant-badge">Active Award</span>
+        <h4>Transarctic PFAS Contamination</h4>
+        <p>NSF EAGER award supporting open-ocean PFAS sampling across Arctic polar stations, with R/V Dawn as the primary research platform.</p>
+        <div class="grant-detail">
+          <div class="grant-row"><span class="grant-key">Award No.</span><span class="grant-val">#2444939</span></div>
+          <div class="grant-row"><span class="grant-key">Agency</span><span class="grant-val">National Science Foundation</span></div>
+          <div class="grant-row"><span class="grant-key">Program</span><span class="grant-val">EAGER</span></div>
+          <div class="grant-row"><span class="grant-key">Status</span><span class="grant-val" style="color:var(--gold-light)">Active</span></div>
+        </div>
+      </div>
+      <div class="grant-card">
+        <span class="grant-badge">Proposal In Development</span>
+        <h4>AlMgB14 Fundamental Science</h4>
+        <p>Full DMR/CER proposal targeting fundamental characterization of BAM optical and electronic properties, building on first-ever measurements by the PML.</p>
+        <div class="grant-detail">
+          <div class="grant-row"><span class="grant-key">Agency</span><span class="grant-val">National Science Foundation</span></div>
+          <div class="grant-row"><span class="grant-key">Program</span><span class="grant-val">DMR / CER</span></div>
+          <div class="grant-row"><span class="grant-key">Target</span><span class="grant-val">Physical Review Materials</span></div>
+          <div class="grant-row"><span class="grant-key">Status</span><span class="grant-val" style="color:var(--gold)">In development</span></div>
+        </div>
+      </div>
+      <div class="grant-card">
+        <span class="grant-badge">Proposal In Development</span>
+        <h4>Microplastic Fracture &amp; Cytotoxicity</h4>
+        <p>NSF CBET Interfacial Engineering proposal targeting the JSF/FVM scientific framework, supported by full budget, white paper, and facilities gap analysis.</p>
+        <div class="grant-detail">
+          <div class="grant-row"><span class="grant-key">Agency</span><span class="grant-val">National Science Foundation</span></div>
+          <div class="grant-row"><span class="grant-key">Program</span><span class="grant-val">CBET Interfacial Engineering</span></div>
+          <div class="grant-row"><span class="grant-key">Lead</span><span class="grant-val">Arafin (PhD candidate)</span></div>
+          <div class="grant-row"><span class="grant-key">Status</span><span class="grant-val" style="color:var(--gold)">In development</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Patents -->
+    <div class="section-label" style="margin-top: 64px;">Intellectual Property</div>
+    <h2 class="section-heading">Patent Applications</h2>
+    <div class="patents-grid" style="margin-top:36px;">
+      <div class="patent-card">
+        <span class="patent-num">Patent Application 01</span>
+        <h4>PFAS-Free Cookware Coating Using AlMgB14 Ceramic</h4>
+        <p>A novel non-stick cookware coating based on AlMgB14 (BAM) ceramic, developed as a direct replacement for polytetrafluoroethylene (PTFE/Teflon) with no per- or polyfluoroalkyl substance chemistry.</p>
+        <span class="patent-status"><span class="status-dot"></span> Pending</span>
+      </div>
+      <div class="patent-card">
+        <span class="patent-num">Patent Application 02</span>
+        <h4>Surface Functionalization Method for AlMgB14</h4>
+        <p>A proprietary surface functionalization process enabling the controlled deposition and adhesion of BAM ceramic coatings on metallic and polymeric substrates for industrial applications.</p>
+        <span class="patent-status"><span class="status-dot"></span> Pending</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== PUBLICATIONS ===== -->
+<section class="pubs-section" id="publications">
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:8px;">
+      <div>
+        <div class="section-label">Select Publications</div>
+        <h2 class="section-heading">Research Output</h2>
+      </div>
+      <a href="#" class="btn-ghost">Full Publication List</a>
+    </div>
+    <div class="pubs-list">
+
+      <div class="pub-item">
+        <span class="pub-year">2024</span>
+        <div class="pub-body">
+          <a href="https://link.springer.com/article/10.1557/s43580-024-00897-y" class="pub-title">Consumer food waste upcycled into lignocellulosic materials that are utilized in polyethene biocomposites</a>
+          <div class="pub-authors">T.L. Powell, J.J. Doughty, Y. Shimabukuro, C.L. Kirschner, R.B. Tipton</div>
+          <div class="pub-journal">MRS Advances, June 2024</div>
+        </div>
+        <span class="pub-type">Journal</span>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">2022</span>
+        <div class="pub-body">
+          <a href="https://www.nature.com/articles/d41586-022-00113-7" class="pub-title">How I navigated through my midlife PhD</a>
+          <div class="pub-authors">R.B. Tipton</div>
+          <div class="pub-journal">Nature, 2022</div>
+        </div>
+        <span class="pub-type">Essay</span>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">2021</span>
+        <div class="pub-body">
+          <a href="https://www.sciencedirect.com/science/article/abs/pii/S2214860421005625" class="pub-title">Optical interconnects on a flexible substrate by multi-material hybrid additive and subtractive manufacturing</a>
+          <div class="pub-authors">R.B. Tipton, D. Hou, Z. Shi, T.M. Weller, V.R. Bhethanabotla</div>
+          <div class="pub-journal">Additive Manufacturing Journal, Volume 48, Part A, 2021</div>
+        </div>
+        <span class="pub-type">Journal</span>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">2020</span>
+        <div class="pub-body">
+          <a href="https://scholar.google.com/scholar?oi=bibs&cluster=5543329422992073438&btnI=1&hl=en" class="pub-title">Digital fabrication of a small diameter polymer optical waveguide</a>
+          <div class="pub-authors">V.R. Bhethanabotla, T.M. Weller, R.B. Tipton, J.T. Bentley et al.</div>
+          <div class="pub-journal">US Patent 10,852,479, 2020</div>
+        </div>
+        <span class="pub-type">Patent</span>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">2020</span>
+        <div class="pub-body">
+          <a href="https://www.sciencedirect.com/science/article/abs/pii/S2214860420305996" class="pub-title">Laser Enhanced Direct Print Additive Manufacturing of Embedded Circular Cross-Section Optical Fiber Interconnects for Board Level Computing Devices</a>
+          <div class="pub-authors">R.B. Tipton, D. Hou, E.A. Rojas-Nastrucci, T.M. Weller, V.R. Bhethanabotla</div>
+          <div class="pub-journal">Additive Manufacturing Journal, Volume 34, 2020</div>
+        </div>
+        <span class="pub-type">Journal</span>
+      </div>
+
+      <div class="pub-item" style="background:var(--navy-light); border-left:2px solid var(--gold);">
+        <span class="pub-year" style="color:rgba(200,150,62,0.5);">In prep</span>
+        <div class="pub-body">
+          <span class="pub-title" style="color:var(--cream-dim);">Global PFAS Synthesis: Transarctic to Caribbean Ocean Contamination Baseline</span>
+          <div class="pub-authors">R.B. Tipton, Md. S.N. Arafin, M. Sun, R. Lohmann, J. Becanova</div>
+          <div class="pub-journal" style="color:rgba(200,150,62,0.6);">Target: Nature Water</div>
+        </div>
+        <span class="pub-type" style="border-color:rgba(200,150,62,0.4); color:var(--gold);">In Prep</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FIELD CAMPAIGNS ===== -->
+<section class="field-section" id="campaigns">
+  <div class="container">
+    <div class="section-label">Ocean Field Science</div>
+    <h2 class="section-heading">Field Campaigns &amp; Expeditions</h2>
+    <p style="font-size:16px; font-weight:300; color:var(--text-muted); max-width:600px; margin-top:12px; line-height:1.75;">The PML conducts active field science aboard R/V Dawn in partnership with the Sustainable Seas Institute. Campaigns provide water samples, in situ measurements, and expedition data for lab-based analysis.</p>
+    <div class="campaigns-grid">
+
+      <div class="campaign-card">
+        <div class="campaign-date">2025 &nbsp;|&nbsp; Arctic</div>
+        <h4>Trans-Polar PFAS Expedition</h4>
+        <p>Multi-site Arctic campaign reaching three historically inaccessible polar sampling locations. Samples presented at AIChE 2025 Annual Meeting.</p>
+        <div class="campaign-sites">
+          <div class="site-row"><span class="site-dot"></span> Geographic North Pole</div>
+          <div class="site-row"><span class="site-dot"></span> Magnetic North Pole</div>
+          <div class="site-row"><span class="site-dot"></span> Arctic Pole of Inaccessibility</div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="campaign-date">Dec 2025 &nbsp;/&nbsp; Jan 2026 &nbsp;|&nbsp; Caribbean</div>
+        <h4>Lesser Antilles Open-Ocean Campaign</h4>
+        <p>Ten-day R/V Dawn expedition into the Lesser Antilles for open-ocean PFAS and microplastics sampling. Samples now under analysis at PML.</p>
+        <div class="campaign-sites">
+          <div class="site-row"><span class="site-dot"></span> Lesser Antilles arc stations</div>
+          <div class="site-row"><span class="site-dot"></span> Atlantic open-ocean transects</div>
+          <div class="site-row"><span class="site-dot"></span> Caribbean basin baseline</div>
+        </div>
+      </div>
+
+      <div class="campaign-card" style="border-top-color:rgba(200,150,62,0.35);">
+        <div class="campaign-date">2026 &nbsp;|&nbsp; South Pacific &nbsp;(Planned)</div>
+        <h4>Mo'orea &amp; South Pacific Baseline</h4>
+        <p>Planned expansion of global baseline into South Pacific waters, extending the contamination dataset toward a true hemispheric picture of remote ocean PFAS.</p>
+        <div class="campaign-sites">
+          <div class="site-row"><span class="site-dot" style="background:rgba(200,150,62,0.5)"></span> Mo'orea, French Polynesia</div>
+          <div class="site-row"><span class="site-dot" style="background:rgba(200,150,62,0.5)"></span> South Pacific transect stations</div>
+          <div class="site-row"><span class="site-dot" style="background:rgba(200,150,62,0.5)"></span> Comparative Arctic-Pacific analysis</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Performance Materials Lab</div>
+        <div class="footer-inst">The William States Lee College of Engineering &nbsp;|&nbsp; UNC Charlotte</div>
+        <p>Advancing materials science and clean water research through rigorous inquiry, field science, and a commitment to real-world impact.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Research</h5>
+        <ul>
+          <li><a href="#bam">BAM Ceramics</a></li>
+          <li><a href="#pfas">PFAS &amp; Ocean</a></li>
+          <li><a href="#microplastics">Microplastics</a></li>
+          <li><a href="#publications">Publications</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Lab</h5>
+        <ul>
+          <li><a href="#">Dr. Tipton</a></li>
+          <li><a href="#">Team</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">News</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="#">EPIC Hall, Room 3186</a></li>
+          <li><a href="#">UNC Charlotte</a></li>
+          <li><a href="mailto:rtipton2@charlotte.edu">rtipton2@charlotte.edu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Performance Materials Laboratory, UNC Charlotte. All rights reserved.</p>
+      <p style="color:rgba(244,239,230,0.3)">Customizr Theme | WordPress</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
